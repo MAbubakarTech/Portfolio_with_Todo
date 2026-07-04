@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { HiOutlineTrash } from "react-icons/hi2";
+import { buildApiUrl } from "@/lib/apiBase";
 
 interface TodoItem {
   _id: string;
@@ -23,7 +24,7 @@ export default function Todo() {
     return localStorage.getItem("token");
   });
   const router = useRouter();
-  const API_URL = "/api/todos";
+  const API_URL = buildApiUrl("/api/todos");
 
   useEffect(() => {
     if (!token) {
@@ -63,7 +64,7 @@ export default function Todo() {
     }
 
     fetchTodos(token);
-  }, [token, router]);
+  }, [token, router, API_URL]);
 
   const handleAddTask = async (e: React.BaseSyntheticEvent) => {
     e.preventDefault();

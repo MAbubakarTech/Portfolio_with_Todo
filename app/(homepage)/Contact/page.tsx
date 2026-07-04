@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { buildApiUrl } from "@/lib/apiBase";
 
 export default function Contact() {
   const [status, setStatus] = useState("");
@@ -31,7 +32,7 @@ export default function Contact() {
     }
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch(buildApiUrl("/api/contact"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -41,7 +42,10 @@ export default function Contact() {
         }),
       });
 
-      const result = await response.json();
+      const contentType = response.headers.get("content-type") || "";
+      const result = contentType.includes("application/json")
+        ? await response.json()
+        : { error: await response.text() };
 
       if (!response.ok) {
         throw new Error(result.error || "Something went wrong");

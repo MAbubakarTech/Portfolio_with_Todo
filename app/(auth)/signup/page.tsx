@@ -7,6 +7,7 @@ import {
   HiOutlineMail,
   HiOutlineLockClosed,
 } from "react-icons/hi";
+import { buildApiUrl } from "@/lib/apiBase";
 
 export default function SignupPage() {
   const [formData, setFormData] = useState({
@@ -36,7 +37,7 @@ export default function SignupPage() {
     setError("");
 
     try {
-      const response = await fetch("/api/auth/signup", {
+      const response = await fetch(buildApiUrl("/api/auth/signup"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,7 +49,10 @@ export default function SignupPage() {
         }),
       });
 
-      const data = await response.json();
+      const contentType = response.headers.get("content-type") || "";
+      const data = contentType.includes("application/json")
+        ? await response.json()
+        : { message: await response.text() };
 
       if (response.ok) {
         setMessage("User registered successfully!");
