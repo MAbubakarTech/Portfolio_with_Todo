@@ -23,7 +23,7 @@ export default function Todo() {
     return localStorage.getItem("token");
   });
   const router = useRouter();
-  const API_URL = "http://localhost:5000/api/todos";
+  const API_URL = "/api/todos";
 
   useEffect(() => {
     if (!token) {
