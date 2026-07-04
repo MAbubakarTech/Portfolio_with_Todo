@@ -21,8 +21,16 @@ export default function LandingPage() {
           <h1 className="text-5xl py-10 font-black bg-linear-to-r from-white via-slate-500 to-red-300 bg-clip-text text-transparent text-center w-full ">
             Hello, My name is Abubakar
           </h1>
-          <p className="relative mt-20 z-10 bg-white/5 border border-white/30 py-40 px-25 rounded-2xl shadow-3xl max-w-md text-center text-slate-400 transition-all duration-350 hover:scale-105">
-            Learning React and Next.js.
+          <p className="relative mt-20 z-10 bg-white/5 border border-white/30 p-7 rounded-2xl shadow-3xl max-w-md text-center text-slate-400 transition-all duration-350 hover:scale-105">
+            I am a recent Computer Science graduate and Full-Stack Developer
+            with proven industry experience delivering production-ready
+            applications. Specializing in the MERN stack (React, Next.js,
+            Node.js, and MongoDB), I build with a security-first mindset,
+            focusing heavily on JWT authentication, strict Role-Based Access
+            Control (RBAC), and fixing production vulnerabilities. I thrive on
+            writing clean, optimized code that speeds up database performance,
+            safeguards user data, and scales seamlessly to support business
+            growth.
           </p>
         </div>
       </section>
