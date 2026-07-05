@@ -1,9 +1,19 @@
 {
   "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    },
+    {
+      "src": "MyPortfolio_backend/index.js",
+      "use": "@vercel/node"
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "/MyPortfolio_backend/:path*"
+      "destination": "/MyPortfolio_backend/index.js"
     }
   ]
 }
